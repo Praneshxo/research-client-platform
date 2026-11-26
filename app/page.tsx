@@ -48,7 +48,7 @@ function FileIcon({ kind, size=18 }: { kind: string; size?: number }) { const pr
 function StatusBadge({ status, small=false }: { status: Status; small?: boolean }) { return <span className={`status status-${status.toLowerCase().replace(' ','-')} ${small?'small':''}`}><i/>{status}</span>; }
 
 export default function Home() {
- const role='Client' as const;
+ const [role,setRole]=useState<'Client'|'Researcher'>('Client');
  const [selectedVersion,setSelectedVersion]=useState(2); const [folder,setFolder]=useState('All files'); const [query,setQuery]=useState(''); const [sort,setSort]=useState('updated');
  const [view,setView]=useState<'overview'|'files'|'activity'>('files'); const [overviewVisible,setOverviewVisible]=useState(false); const [selectedFile,setSelectedFile]=useState<FileItem|null>(null); const [compare,setCompare]=useState(false); const [compareFrom,setCompareFrom]=useState(2); const [notice,setNotice]=useState(''); const [sidebar,setSidebar]=useState(true);
  useEffect(()=>{if(window.innerWidth<780)setSidebar(false)},[]);
